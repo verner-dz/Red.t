@@ -16,12 +16,13 @@ class LinksController < ApplicationController
 
   def create
     require_authentication
-    current_user.links.create(link_params)
-    # @link = Link.create(link_params)
-    # ===== next two lines are equivalent =====
-    # current_user.links.push(@link)
-    # @link.update(user_id: params[:user_id])
-    redirect_to root_path
+    @link = Link.new(link_params)
+    if @link.save
+      current_user.links.push(@link)
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private

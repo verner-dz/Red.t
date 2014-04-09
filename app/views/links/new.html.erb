@@ -1,6 +1,14 @@
 <%= form_for([@user, @link]) do |f| %>
 
+<div class="errors">
+  <ul>
+  <% @link.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
 <div class="field">
+  <em><%= flash[:url_not_unique] %></em><br>
   <%= f.label :title %>
   <%= f.text_field :title %>
 </div>
