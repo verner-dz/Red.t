@@ -1,8 +1,14 @@
 <h1>Welcome to Red.t</h1>
-<% @links.each do |link| %>
+<% @links.each_with_index do |link, i| %>
+  <p> <%= i.next %> </p>
+  <p><%= link.ranking.score %></p>
   <h1><%= link_to link.title, link.link_url %> </h1>
   <%= image_tag link.img_url %>
   <%= link_to link.user.username, link.user %>
+
+  <% if current_user %>
+    <%= link_to 'upvote', "/links/#{link.id}/upvote", method: :post %>
+  <% end %>
 <% end %>
 
 <br>

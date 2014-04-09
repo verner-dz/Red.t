@@ -3,6 +3,8 @@ RedtApp::Application.routes.draw do
   root to: 'links#all'
   get '/links', to: "links#all"
 
+  post '/links/:id/upvote', to: "links#upvote"
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

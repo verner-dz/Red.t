@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   it {should have_many(:links)}
-  it {should have_and_belong_to_many(:rankings)}
+  it {should have_many(:rankings).through(:votes)}
 
   #we have to test comments later
 

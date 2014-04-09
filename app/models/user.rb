@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many(:links)
-  has_and_belongs_to_many(:rankings)
+  has_many(:votes)
+  has_many(:rankings, through: :votes)
 
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true

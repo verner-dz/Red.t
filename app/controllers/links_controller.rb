@@ -19,10 +19,20 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
     if @link.save
       current_user.links.push(@link)
+      ranking = Ranking.create(score: 0)
+      @link.update(ranking_id: ranking.id)
+      # @link.ranking_id = @ranking.id
       redirect_to root_path
     else
       render 'new'
     end
+  end
+
+  def upvote
+    # render text: params.inspect
+    link = Link.find(params[:id])
+    link.upvote
+    redirect_to links_path
   end
 
   private
