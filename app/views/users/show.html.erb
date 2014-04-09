@@ -1,0 +1,4 @@
+<h1><%= @user.username %></h1>
+<% @user.links.each do |link| %>
+  <%= render 'links/link' %>
+<% end %>
