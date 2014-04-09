@@ -7,7 +7,7 @@
   <%= link_to link.user.username, link.user %>
 
   <% if current_user %>
-    <%= link_to 'upvote', "/links/#{link.id}/upvote", method: :post %>
+    <p><%= link_to 'upvote', "/links/#{link.id}/upvote", method: :post %> | <%= link_to 'downvote', "/links/#{link.id}/downvote", method: :post %></p>
   <% end %>
 <% end %>
 

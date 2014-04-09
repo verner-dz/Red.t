@@ -29,9 +29,38 @@ class LinksController < ApplicationController
   end
 
   def upvote
-    # render text: params.inspect
     link = Link.find(params[:id])
-    link.upvote
+    if Vote.find_by(user: current_user)
+      vote = Vote.find_by(user: current_user)
+      if vote.upvote
+        # do nothing
+      else
+        2.times { link.upvote }
+        vote.update(downvote: false, upvote: true)
+      end
+    else
+      vote = Vote.create(user: current_user, ranking: link.ranking)
+      link.upvote
+      vote.update(upvote: true)
+    end
+    redirect_to links_path
+  end
+
+  def downvote
+    link = Link.find(params[:id])
+    if Vote.find_by(user: current_user)
+      vote = Vote.find_by(user: current_user)
+      if vote.downvote
+        # do nothing
+      else
+        2.times { link.downvote }
+        vote.update(downvote: true, upvote: false)
+      end
+    else
+      vote = Vote.create(user: current_user, ranking: link.ranking)
+      link.downvote
+      vote.update(downvote: true)
+    end
     redirect_to links_path
   end
 

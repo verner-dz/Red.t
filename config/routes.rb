@@ -4,6 +4,7 @@ RedtApp::Application.routes.draw do
   get '/links', to: "links#all"
 
   post '/links/:id/upvote', to: "links#upvote"
+  post '/links/:id/downvote', to: "links#downvote"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
