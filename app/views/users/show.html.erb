@@ -1,4 +1,6 @@
 <h1><%= @user.username %></h1>
+
 <% @user.links.each do |link| %>
-  <%= render 'links/link' %>
+  <h1><%= link_to link.title, link.link_url %> </h1>
+  <%= image_tag link.img_url %>
 <% end %>

@@ -1,0 +1,11 @@
+<h1>Welcome to Red.t</h1>
+<% @links.each do |link| %>
+  <h1><%= link_to link.title, link.link_url %> </h1>
+  <%= image_tag link.img_url %>
+  <%= link_to link.user.username, link.user %>
+<% end %>
+
+<br>
+<% if current_user %>
+  <%= link_to 'Submit link', new_user_link_path(current_user) %>
+<% end %>

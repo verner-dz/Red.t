@@ -1,0 +1,22 @@
+<%= form_for([@user, @link]) do |f| %>
+
+<div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="field">
+  <%= f.label :link_url %>
+  <%= f.text_field :link_url %>
+</div>
+
+<div class="field">
+  <%= f.label :img_url %>
+  <%= f.text_field :img_url %>
+</div>
+
+<div class="action">
+  <%= f.submit %>
+</div>
+
+<% end %>
